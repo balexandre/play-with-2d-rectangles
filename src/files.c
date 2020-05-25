@@ -10,40 +10,57 @@
 COMANDO *getComando(char *linha)
 {
     COMANDO *comando = malloc(sizeof(COMANDO));
-    char *found;
 
     // comandos possiveis
-    char *create = "create";       // create 1,3+12,5
-    char *moveLeft = "moveleft";   // moveleft 12,6+3
-    char *moveRight = "moveright"; // moveright 12,6+3
-    char *rotate = "rotate";       // rotate
+    // create;1;3;12;5
+    // moveleft;12;6;3
+    // moveright;12;6;3
+    // rotate;
 
-    // create
-    found = strstr(linha, create);
-    if (found != NULL)
-    {
-        comando->tipo = CREATE;
-    }
+    const char delimitar[2] = ";";
+    int i = 0;
+    char *token = strtok(linha, delimitar);
 
-    // moveLeft
-    found = strstr(linha, moveLeft);
-    if (found != NULL)
+    while (token != NULL)
     {
-        comando->tipo = MOVE_LEFT;
-    }
+        switch (i)
+        {
+        case 0:
+            if (strcmp(token, "create") == 0)
+                comando->tipo = CREATE;
+            else if (strcmp(token, "moveleft") == 0)
+                comando->tipo = MOVE_LEFT;
+            else if (strcmp(token, "moveright") == 0)
+                comando->tipo = MOVE_RIGHT;
+            else if (strcmp(token, "rotate") == 0)
+                comando->tipo = ROTATE;
+            break;
+        case 1:
+            // x
+            if (comando->tipo != ROTATE)
+                comando->x = atoi(token);
+            break;
+        case 2:
+            // y
+            if (comando->tipo != ROTATE)
+                comando->y = atoi(token);
+            break;
+        case 3:
+            // w or p
+            if (comando->tipo == CREATE)
+                comando->w = atoi(token);
+            else if (comando->tipo == MOVE_LEFT || comando->tipo == MOVE_RIGHT)
+                comando->p = atoi(token);
+            break;
+        case 4:
+            // h
+            if (comando->tipo == CREATE)
+                comando->h = atoi(token);
+        }
 
-    // moveRight
-    found = strstr(linha, moveRight);
-    if (found != NULL)
-    {
-        comando->tipo = MOVE_RIGHT;
-    }
-
-    // rotate
-    found = strstr(linha, rotate);
-    if (found != NULL)
-    {
-        comando->tipo = ROTATE;
+        // linha seguinte
+        token = strtok(NULL, delimitar);
+        i += 1;
     }
 
     return comando;
