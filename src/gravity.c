@@ -81,20 +81,22 @@ void activaGravidadePorObjecto(RECTANGULO *objectos, int posicao, int num_object
     }
 
     if (DEBUG == 1)
+    {
         printf("Objecto %d (%d) => %d\n", posicao + 1, podemos_mover_objecto, posicoes_a_mover);
 
-    printf("Objecto %d verificado -> x(%d,%d) y(%d,%d) => ", posicao + 1, xMin, xMax, yMin, yMax);
-    if (podemos_mover_objecto == 0 || posicoes_a_mover == 0)
-    {
-        red();
-        printf("NAO PODE SER MOVIDO\n");
-        reset();
-    }
-    else
-    {
-        green();
-        printf("move-se %d posicao(oes) para BAIXO\n", posicoes_a_mover);
-        reset();
+        printf("Objecto %d verificado -> x(%d,%d) y(%d,%d) => ", posicao + 1, xMin, xMax, yMin, yMax);
+        if (podemos_mover_objecto == 0 || posicoes_a_mover == 0)
+        {
+            red();
+            printf("NAO PODE SER MOVIDO\n");
+            reset();
+        }
+        else
+        {
+            green();
+            printf("move-se %d posicao(oes) para BAIXO\n", posicoes_a_mover);
+            reset();
+        }
     }
 
     // move objecto para baixo

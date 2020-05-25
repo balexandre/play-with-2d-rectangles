@@ -111,7 +111,7 @@ int seleccionaObjecto(int x, int y, RECTANGULO *objectos, int num_objectos)
         }
     }
 
-    printf("Objecto %d foi seleccionado\n", i + 1);
+    // printf("Objecto %d foi seleccionado\n", i + 1);
     return encontrado > 0 ? i : -1;
 }
 
