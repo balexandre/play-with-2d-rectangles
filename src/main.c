@@ -345,7 +345,7 @@ void desenha(RECTANGULO *area, RECTANGULO *objectos, int num_objectos)
     }
 }
 
-// clear && gcc -Wall -Werror -o rectangles main.c && ./rectangles
+// clear && gcc -Wall -Werror -o rectangles src/main.c && ./rectangles
 int main(int argc, char *argv[])
 {
     int num_objectos = 0;
