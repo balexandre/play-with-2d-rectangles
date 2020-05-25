@@ -1,3 +1,4 @@
+area;30;14
 create;1;3;12;5
 create;9;5;11;3
 create;18;9;6;3
