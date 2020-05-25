@@ -15,7 +15,8 @@ enum TIPO_COMANDO {
     CREATE = 1,
     MOVE_LEFT = 2,
     MOVE_RIGHT = 3,
-    ROTATE = 4
+    ROTATE = 4,
+    AREA = 5
 };
 
 typedef struct t_comando COMANDO;

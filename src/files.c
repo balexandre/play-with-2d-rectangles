@@ -12,6 +12,7 @@ COMANDO *getComando(char *linha)
     COMANDO *comando = malloc(sizeof(COMANDO));
 
     // comandos possiveis
+    // area;30;14
     // create;1;3;12;5
     // moveleft;12;6;3
     // moveright;12;6;3
@@ -34,15 +35,21 @@ COMANDO *getComando(char *linha)
                 comando->tipo = MOVE_RIGHT;
             else if (strcmp(token, "rotate") == 0)
                 comando->tipo = ROTATE;
+            else if (strcmp(token, "area") == 0)
+                comando->tipo = AREA;
             break;
         case 1:
             // x
-            if (comando->tipo != ROTATE)
+            if (comando->tipo == AREA)
+                comando->w = atoi(token);
+            else if (comando->tipo != ROTATE)
                 comando->x = atoi(token);
             break;
         case 2:
             // y
-            if (comando->tipo != ROTATE)
+            if (comando->tipo == AREA)
+                comando->h = atoi(token);
+            else if (comando->tipo != ROTATE)
                 comando->y = atoi(token);
             break;
         case 3:
