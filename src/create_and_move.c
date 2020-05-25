@@ -93,4 +93,26 @@ void rodaObjectos(RECTANGULO *objectos, int num_objectos, int largura_do_plano)
                objectos[i].largura, objectos[i].altura);
     }
 }
+
+int seleccionaObjecto(int x, int y, RECTANGULO *objectos, int num_objectos)
+{
+    int i, encontrado = 0;
+
+    for (i = 0; i < num_objectos; i += 1)
+    {
+        RECTANGULO objecto = objectos[i];
+
+        if (x >= objecto.x0 && x <= objecto.x1 
+            && y >= objecto.y0 && y <= objecto.y2)
+        {
+            // na possica x,y existe um objecto desenhado
+            encontrado = 1;
+            break;
+        }
+    }
+
+    printf("Objecto %d foi seleccionado\n", i + 1);
+    return encontrado > 0 ? i : -1;
+}
+
 /* EOF */
