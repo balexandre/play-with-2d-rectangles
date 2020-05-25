@@ -4,6 +4,7 @@
 
 ## available commands to use in the file
 
+- *Change area/plan (by default it has 80x25)*, as `area;w;h`, for example `area;30;14`
 - *Create rectangle* as `create;x;y;w;h`, for example: `create;1;3;12;5`
 - *Move rectangle left* as `moveleft;x;y;p`, for example: `moveleft;12;6;3`
 - *Move rectangle right* as `moveright;x;y;p`, for example: `moveright;12;6;3`
