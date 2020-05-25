@@ -11,5 +11,19 @@ struct t_rectangulo
     int largura, altura;
 };
 
+enum TIPO_COMANDO {
+    CREATE = 1,
+    MOVE_LEFT = 2,
+    MOVE_RIGHT = 3,
+    ROTATE = 4
+};
+
+typedef struct t_comando COMANDO;
+struct t_comando
+{
+    enum TIPO_COMANDO tipo;
+    int x, y, w, h, p;
+};
+
 #endif
 /* EOF */
