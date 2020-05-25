@@ -8,6 +8,7 @@
 #include "create_and_move.h"
 #include "gravity.h"
 #include "printing.h"
+#include "files.h"
 
 void com_menu_de_opcoes()
 {
@@ -119,7 +120,6 @@ void com_menu_de_opcoes()
         }
     }
 }
-
 void com_instrucoes()
 {
     system("cls||clear"); // limpa o ecran
@@ -189,6 +189,21 @@ void com_instrucoes()
     desenha(area, objectos, num_objectos);
     // #endregion
 }
+void le_o_ficheiro()
+{
+    COMANDO *comandos[99];
+    int numComandos = readFileComandos(comandos);
+
+    // mostra comandos
+    for (int i = 0; i < numComandos; i += 1)
+    {
+        COMANDO *comando = comandos[i];
+        printf("COMANDO %d => %d\n", i + 1, comando->tipo);
+    }
+
+    // executa comandos
+    // TODO: executa comandos
+}
 
 // clear && gcc -Wall -Werror -o rectangles src/*.c && ./rectangles
 int main(int argc, char *argv[])
@@ -198,7 +213,9 @@ int main(int argc, char *argv[])
     printf("--------------------------------------------\n");
     printf("Opcao 1: Ver programa com menu\n");
     printf(" > mostra um menu onde pode criar e mover objectos assim como definir o plano\n");
-    printf("Opcao 2: Ver programa com inscrucoes pre-definidas\n");
+    printf("Opcao 2: Ver programa lendo ficheiro de comandos\n");
+    printf(" > executa os comandos do ficheiro './files/commands.txt'\n");
+    printf("Opcao 3: Ver programa com inscrucoes pre-definidas\n");
     printf(" > cria um plano 30x20\n");
     printf(" > cria um rectangulo 1,3+12,5\n");
     printf(" > cria um rectangulo 6,5+11,3\n");
@@ -220,6 +237,8 @@ int main(int argc, char *argv[])
     if (menuInicial == 1)
         com_menu_de_opcoes();
     else if (menuInicial == 2)
+        le_o_ficheiro();
+    else if (menuInicial == 3)
         com_instrucoes();
 
     exit(EXIT_SUCCESS);
