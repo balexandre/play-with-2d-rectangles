@@ -10,6 +10,7 @@ void red(void);
 void yellow(void);
 void cyan(void);
 void reset(void);
+
 void imprimeTitulo(char *texto);
 
 #endif
