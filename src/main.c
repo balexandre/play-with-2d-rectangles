@@ -28,7 +28,7 @@ void com_menu_de_opcoes()
         {
             RECTANGULO obj = objectos[iObj];
             printf("[RECTANGULO %d] x(%d) y(%d), %dx%d\n",
-               iObj + 1, obj.x0, obj.y0, obj.largura, obj.altura);
+                   iObj + 1, obj.x0, obj.y0, obj.largura, obj.altura);
         }
         printf("--------------------------------------------\n");
 
@@ -42,81 +42,81 @@ void com_menu_de_opcoes()
         scanf("%d", &menu);
         switch (menu)
         {
-            case 1:
-                printf("\n[DEFINIR plano]");
-                printf("\n digite largura: ");
-                scanf("%d", &w);
-                printf(" digite altura: ");
-                scanf("%d", &h);
-                area = cria_objecto(0, 0, w, h);
-                system("cls||clear"); // limpa o ecran
-                break;
-            case 2:
-                printf("\n[CRIAR rectangulo]");
-                printf("\n digite a posicao inicial x: ");
-                scanf("%d", &x);
-                printf(" digite a posicao inicial y: ");
-                scanf("%d", &y);
-                printf(" digite largura: ");
-                scanf("%d", &w);
-                printf(" digite altura: ");
-                scanf("%d", &h);
+        case 1:
+            printf("\n[DEFINIR plano]");
+            printf("\n digite largura: ");
+            scanf("%d", &w);
+            printf(" digite altura: ");
+            scanf("%d", &h);
+            area = cria_objecto(0, 0, w, h);
+            system("cls||clear"); // limpa o ecran
+            break;
+        case 2:
+            printf("\n[CRIAR rectangulo]");
+            printf("\n digite a posicao inicial x: ");
+            scanf("%d", &x);
+            printf(" digite a posicao inicial y: ");
+            scanf("%d", &y);
+            printf(" digite largura: ");
+            scanf("%d", &w);
+            printf(" digite altura: ");
+            scanf("%d", &h);
 
-                RECTANGULO *objecto = cria_objecto(x, y, w, h);
-                num_objectos += 1; // aumenta o numero total de objectos
-                objectos = realloc(objectos, sizeof(*objectos) * num_objectos);
-                objectos[num_objectos-1] = *objecto;
-                activaGravidade(objectos, num_objectos);
+            RECTANGULO *objecto = cria_objecto(x, y, w, h);
+            num_objectos += 1; // aumenta o numero total de objectos
+            objectos = realloc(objectos, sizeof(*objectos) * num_objectos);
+            objectos[num_objectos - 1] = *objecto;
+            activaGravidade(objectos, num_objectos);
 
-                system("cls||clear"); // limpa o ecran
-                break;
-            case 3:
-                printf("\n[MOVER rectangulo ESQUERDA (<<)]");
-                printf("\n digite a posicao x: ");
-                scanf("%d", &x);
-                printf(" digite a posicao y: ");
-                scanf("%d", &y);
-                printf(" digite as posicoes a mover: ");
-                scanf("%d", &p);
+            system("cls||clear"); // limpa o ecran
+            break;
+        case 3:
+            printf("\n[MOVER rectangulo ESQUERDA (<<)]");
+            printf("\n digite a posicao x: ");
+            scanf("%d", &x);
+            printf(" digite a posicao y: ");
+            scanf("%d", &y);
+            printf(" digite as posicoes a mover: ");
+            scanf("%d", &p);
 
-                posicaoObjSeleccionado = seleccionaObjecto(x, y, objectos, num_objectos);
-                if (posicaoObjSeleccionado >= 0)
-                {
-                    RECTANGULO *a = moveObjectoParaEsquerda(objectos[posicaoObjSeleccionado], p);
-                    objectos[posicaoObjSeleccionado] = *a;
-                }
-                activaGravidade(objectos, num_objectos);
+            posicaoObjSeleccionado = seleccionaObjecto(x, y, objectos, num_objectos);
+            if (posicaoObjSeleccionado >= 0)
+            {
+                RECTANGULO *a = moveObjectoParaEsquerda(objectos[posicaoObjSeleccionado], p);
+                objectos[posicaoObjSeleccionado] = *a;
+            }
+            activaGravidade(objectos, num_objectos);
 
-                system("cls||clear"); // limpa o ecran
-                break;
-            case 4:
-                printf("\n[MOVER rectangulo DIREITA (>>)]");
-                printf("\n digite a posicao x: ");
-                scanf("%d", &x);
-                printf(" digite a posicao y: ");
-                scanf("%d", &y);
-                printf(" digite as posicoes a mover: ");
-                scanf("%d", &p);
+            system("cls||clear"); // limpa o ecran
+            break;
+        case 4:
+            printf("\n[MOVER rectangulo DIREITA (>>)]");
+            printf("\n digite a posicao x: ");
+            scanf("%d", &x);
+            printf(" digite a posicao y: ");
+            scanf("%d", &y);
+            printf(" digite as posicoes a mover: ");
+            scanf("%d", &p);
 
-                posicaoObjSeleccionado = seleccionaObjecto(x, y, objectos, num_objectos);
-                if (posicaoObjSeleccionado >= 0)
-                {
-                    RECTANGULO *a = moveObjectoParaEsquerda(objectos[posicaoObjSeleccionado], p);
-                    objectos[posicaoObjSeleccionado] = *a;
-                }
+            posicaoObjSeleccionado = seleccionaObjecto(x, y, objectos, num_objectos);
+            if (posicaoObjSeleccionado >= 0)
+            {
+                RECTANGULO *a = moveObjectoParaDireita(objectos[posicaoObjSeleccionado], p);
+                objectos[posicaoObjSeleccionado] = *a;
+            }
 
-                activaGravidade(objectos, num_objectos);
-                system("cls||clear"); // limpa o ecran
-                break;
-            case 5:
-                imprimeTitulo("Plano rodado 90 graus\n\n");
-                rodaObjectos(objectos, num_objectos, area->largura);
-                activaGravidade(objectos, num_objectos);
-                break;
-            case 6:
-                imprimeTitulo("Plano com gravidade activada\n\n");
-                desenha(area, objectos, num_objectos);
-                break;
+            activaGravidade(objectos, num_objectos);
+            system("cls||clear"); // limpa o ecran
+            break;
+        case 5:
+            imprimeTitulo("Plano rodado 90 graus\n\n");
+            rodaObjectos(objectos, num_objectos, area->largura);
+            activaGravidade(objectos, num_objectos);
+            break;
+        case 6:
+            imprimeTitulo("Plano com gravidade activada\n\n");
+            desenha(area, objectos, num_objectos);
+            break;
         }
     }
 }
@@ -191,6 +191,11 @@ void com_instrucoes()
 }
 void le_o_ficheiro()
 {
+    int num_objectos = 0;
+    int posicaoObjSeleccionado = -1;
+    RECTANGULO *area = cria_objecto(0, 0, 80, 25);
+    RECTANGULO *objectos = malloc(sizeof(*objectos));
+
     COMANDO *comandos[99];
     int numComandos = readFileComandos(comandos);
 
@@ -198,11 +203,53 @@ void le_o_ficheiro()
     for (int i = 0; i < numComandos; i += 1)
     {
         COMANDO *comando = comandos[i];
-        printf("COMANDO %d => %d\n", i + 1, comando->tipo);
+        if (comando->tipo == CREATE)
+        {
+            printf("COMANDO %d => CREATE x(%d) y(%d) %dx%d\n",
+                   i + 1, comando->x, comando->y, comando->w, comando->h);
+
+            RECTANGULO *objecto = cria_objecto(comando->x, comando->y, comando->w, comando->h);
+            num_objectos += 1; // aumenta o numero total de objectos
+            objectos = realloc(objectos, sizeof(*objectos) * num_objectos);
+            objectos[num_objectos - 1] = *objecto;
+            activaGravidade(objectos, num_objectos);
+        }
+        else if (comando->tipo == MOVE_LEFT)
+        {
+            printf("COMANDO %d => MOVE LEFT x(%d) y(%d) %d posicoes\n",
+                   i + 1, comando->x, comando->y, comando->p);
+
+            posicaoObjSeleccionado = seleccionaObjecto(comando->x, comando->y, objectos, num_objectos);
+            if (posicaoObjSeleccionado >= 0)
+            {
+                RECTANGULO *a = moveObjectoParaEsquerda(objectos[posicaoObjSeleccionado], comando->p);
+                objectos[posicaoObjSeleccionado] = *a;
+            }
+            activaGravidade(objectos, num_objectos);
+        }
+        else if (comando->tipo == MOVE_RIGHT)
+        {
+            printf("COMANDO %d => MOVE RIGHT x(%d) y(%d) %d posicoes\n",
+                   i + 1, comando->x, comando->y, comando->p);
+
+            posicaoObjSeleccionado = seleccionaObjecto(comando->x, comando->y, objectos, num_objectos);
+            if (posicaoObjSeleccionado >= 0)
+            {
+                RECTANGULO *a = moveObjectoParaDireita(objectos[posicaoObjSeleccionado], comando->p);
+                objectos[posicaoObjSeleccionado] = *a;
+            }
+            activaGravidade(objectos, num_objectos);
+        }
+        else if (comando->tipo == ROTATE)
+        {
+            printf("COMANDO %d => ROTATE\n", i + 1);
+            rodaObjectos(objectos, num_objectos, area->largura);
+            activaGravidade(objectos, num_objectos);
+        }
     }
 
-    // executa comandos
-    // TODO: executa comandos
+    imprimeTitulo("Plano com gravidade activada\n\n");
+    desenha(area, objectos, num_objectos);
 }
 
 // clear && gcc -Wall -Werror -o rectangles src/*.c && ./rectangles
@@ -233,7 +280,7 @@ int main(int argc, char *argv[])
     printf(" > imprime novas posicoes\n");
     printf("Qualquer outro número para Sair\n");
     scanf("%d", &menuInicial);
-    
+
     if (menuInicial == 1)
         com_menu_de_opcoes();
     else if (menuInicial == 2)
