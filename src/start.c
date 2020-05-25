@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "start.h"
+#include "utilities.h"
 
 void com_menu_de_opcoes()
 {
@@ -19,12 +20,14 @@ void com_menu_de_opcoes()
     while (menu != 0)
     {
         printf("--------------------------------------------\n");
-        printf("[PLANO] %dx%d\n", area->largura, area->altura);
+        green(); printf("[PLANO]"); reset();
+        printf(" %dx%d\n", area->largura, area->altura);
         for (int iObj = 0; iObj < num_objectos; iObj += 1)
         {
             RECTANGULO obj = objectos[iObj];
-            printf("[RECTANGULO %d] x(%d) y(%d), %dx%d\n",
-                   iObj + 1, obj.x0, obj.y0, obj.largura, obj.altura);
+            green(); printf("[RECTANGULO %d]", iObj + 1); reset();
+            printf(" x(%d) y(%d), %dx%d\n",
+                   obj.x0, obj.y0, obj.largura, obj.altura);
         }
         printf("--------------------------------------------\n");
 
@@ -115,6 +118,9 @@ void com_menu_de_opcoes()
             break;
         }
     }
+
+    free(area);
+    free(objectos);
 }
 void com_instrucoes()
 {
@@ -184,6 +190,12 @@ void com_instrucoes()
     imprimeTitulo("Com rotacao a +90 graus e gravidade activada\n\n");
     desenha(area, objectos, num_objectos);
     // #endregion
+
+    free(area);
+    free(objectos);
+    free(objecto1);
+    free(objecto2);
+    free(objecto3);
 }
 void le_o_ficheiro()
 {
@@ -258,6 +270,9 @@ void le_o_ficheiro()
 
     imprimeTitulo("Plano com gravidade activada\n\n");
     desenha(area, objectos, num_objectos);
+
+    free(area);
+    free(objectos);
 }
 
 /* EOF */

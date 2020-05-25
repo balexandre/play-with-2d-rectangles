@@ -5,18 +5,21 @@
 #include <stdlib.h>
 
 #include "start.h"
+#include "utilities.h"
 
 // clear && gcc -Wall -Werror -o rectangles src/*.c && ./rectangles
 int main(int argc, char *argv[])
 {
     int menuInicial = 1;
 
-    printf("--------------------------------------------\n");
-    printf("Opcao 1: Ver programa com menu\n");
-    printf(" > mostra um menu onde pode criar e mover objectos assim como definir o plano\n");
-    printf("Opcao 2: Ver programa lendo ficheiro de comandos\n");
-    printf(" > executa os comandos do ficheiro './files/commands.txt'\n");
-    printf("Opcao 3: Ver programa com inscrucoes pre-definidas\n");
+    green_bold(); printf("Opcao 1"); reset();
+    printf(" (digite '1'): Ver programa com menu\n");
+    printf(" > mostra um menu onde pode criar e mover objectos assim como definir o plano\n\n");
+    green_bold(); printf("Opcao 2"); reset();
+    printf(" (digite '2'): Ver programa lendo ficheiro de comandos\n");
+    printf(" > executa os comandos do ficheiro './files/commands.txt'\n\n");
+    green_bold(); printf("Opcao 3"); reset();
+    printf(" (digite '3'): Ver programa com inscrucoes pre-definidas\n");
     printf(" > cria um plano 30x20\n");
     printf(" > cria um rectangulo 1,3+12,5\n");
     printf(" > cria um rectangulo 6,5+11,3\n");
@@ -32,7 +35,7 @@ int main(int argc, char *argv[])
     printf(" > imprime novas posicoes originais\n");
     printf(" > activa gravidade\n");
     printf(" > imprime novas posicoes\n");
-    printf("Qualquer outro número para Sair\n");
+    green_bold(); printf("Digite qualquer outro número ou Ctrl+C para terminar\n"); reset();
     scanf("%d", &menuInicial);
 
     if (menuInicial == 1)
