@@ -11,4 +11,12 @@ char qualCaractereQueImprimePorObjecto(RECTANGULO objecto, int x, int y);
 void desenha(RECTANGULO *area, RECTANGULO *objectos, int num_objectos);
 
 #endif
+
+/*
+** References
+** - adding color to text
+**   http://web.theurbanpenguin.com/adding-color-to-your-output-from-c/
+*/
+
+
 /* EOF */
