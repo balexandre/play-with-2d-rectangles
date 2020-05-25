@@ -55,5 +55,5 @@ should draw, in a `30x15` plan:
 to compile, use the command
 
 ```bash
-clear && gcc -Wall -Werror -o rectangles src/main.c && ./rectangles
+clear && gcc -Wall -Werror -o rectangles src/*.c && ./rectangles
 ```
