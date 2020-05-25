@@ -49,3 +49,11 @@ should draw, in a `30x15` plan:
 | +----------+     +----+      |
 *------------------------------*
 ```
+
+## Compiling
+
+to compile, use the command
+
+```bash
+clear && gcc -Wall -Werror -o rectangles main.c && ./rectangles
+```
